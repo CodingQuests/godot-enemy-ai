@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=3 uid="uid://c384nngwutemw"]
+
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://c7ejb3eny0vwt" path="res://scenes/Player.tscn" id="2"]
+[ext_resource type="Script" path="res://scripts/PlayerCamera.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://desac0qfmliwu" path="res://scenes/DestructibleProp.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://bgruntforge000" path="res://scenes/GruntEnemy.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://cb7i5ns5c42j2" path="res://scenes/SkitterlingEnemy.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://bchargerforge0" path="res://scenes/ChargerEnemy.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://v4x36h6b6464" path="res://scenes/BossEnemy.tscn" id="8"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="BG" type="ColorRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.05, 0.05, 0.07, 1)
+
+[node name="Props" type="Node2D" parent="."]
+
+[node name="Prop1" parent="Props" instance=ExtResource("4")]
+position = Vector2(120, -30)
+
+[node name="Prop2" parent="Props" instance=ExtResource("4")]
+position = Vector2(-120, 90)
+
+[node name="Projectiles" type="Node2D" parent="." groups=["projectiles"]]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Grunt1" parent="Enemies" instance=ExtResource("5")]
+position = Vector2(300, -110)
+
+[node name="Grunt2" parent="Enemies" instance=ExtResource("5")]
+position = Vector2(360, 130)
+
+[node name="Skitter1" parent="Enemies" instance=ExtResource("6")]
+position = Vector2(-260, -150)
+
+[node name="Skitter2" parent="Enemies" instance=ExtResource("6")]
+position = Vector2(-320, -70)
+
+[node name="Charger1" parent="Enemies" instance=ExtResource("7")]
+position = Vector2(260, 280)
+
+[node name="Boss" parent="Enemies" instance=ExtResource("8")]
+position = Vector2(-320, 240)
+
+[node name="Player" parent="." instance=ExtResource("2")]
+
+[node name="Camera" type="Camera2D" parent="."]
+script = ExtResource("3")
+target_path = NodePath("../Player")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="HP" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 416.0
+offset_bottom = 42.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 20
+text = "HP 100 / 100"
+
+[node name="Enemies" type="Label" parent="HUD"]
+offset_left = 16.0
+offset_top = 42.0
+offset_right = 616.0
+offset_bottom = 66.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.85)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 15
+text = "Enemies left: 6"
+
+[node name="Help" type="Label" parent="HUD"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = -58.0
+offset_right = 1016.0
+offset_bottom = -12.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 0.75)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 14
+text = "WASD move    Mouse aim    Left click slash    Right click heavy    Space dash    Tab state labels    R restart
+Red shapes are telegraphs: an attack is about to land there. Step out of it, or dash through it."

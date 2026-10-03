@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://v4x36h6b6464"]
+
+[ext_resource type="PackedScene" path="res://scenes/EnemyBase.tscn" id="1"]
+[ext_resource type="Script" path="res://scripts/BossEnemy.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://grmhkr10qq41" path="res://Assets/Tiles/tile_0087.png" id="3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bossbody"]
+radius = 22.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bosshurt"]
+radius = 24.0
+
+[node name="BossEnemy" instance=ExtResource("1")]
+script = ExtResource("2")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3")
+scale = Vector2(4, 4)
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_bossbody")
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_bosshurt")

@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bchargerforge0"]
+
+[ext_resource type="PackedScene" uid="uid://benemybaseforg" path="res://scenes/EnemyBase.tscn" id="1"]
+[ext_resource type="Script" path="res://scripts/ChargerEnemy.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://8ne6el4lb015" path="res://Assets/Tiles/tile_0110.png" id="3"]
+
+[node name="ChargerEnemy" instance=ExtResource("1")]
+script = ExtResource("2")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3")

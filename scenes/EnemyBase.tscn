@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://benemybaseforg"]
+
+[ext_resource type="Script" path="res://scripts/EnemyBase.gd" id="1"]
+[ext_resource type="Script" path="res://scripts/HealthComponent.gd" id="2"]
+[ext_resource type="Script" path="res://scripts/HurtboxComponent.gd" id="3"]
+[ext_resource type="Script" path="res://scripts/HitboxComponent.gd" id="4"]
+[ext_resource type="Texture2D" uid="uid://bklfthf0i1n15" path="res://Assets/Tiles/tile_0108.png" id="5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hurt"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_attack"]
+radius = 18.0
+
+[node name="EnemyBase" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 4
+collision_mask = 1
+script = ExtResource("1")
+max_health = 50.0
+speed = 95.0
+attack_damage = 12.0
+attack_knockback = 180.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("5")
+scale = Vector2(2, 2)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_body")
+
+[node name="Health" type="Node" parent="."]
+script = ExtResource("2")
+max_health = 50.0
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 32
+script = ExtResource("3")
+show_damage_numbers = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_hurt")
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 0
+monitoring = false
+script = ExtResource("4")
+damage = 12.0
+knockback_force = 180.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_attack")
+disabled = true
+
+[node name="Telegraph" type="Polygon2D" parent="."]
+visible = false
+color = Color(1, 0.15, 0.15, 0.35)
