@@ -239,6 +239,17 @@ with interactive lessons and real projects.
   builds this enemy system lesson by lesson: the shared state machine, the
   telegraphs, each enemy type and the boss. The first 3 lessons are free.
 - **[2D Roguelike: Combat Core](https://codingquests.io/quests/2d-roguelike-combat-core?utm_source=github&utm_medium=resource&utm_campaign=godot_enemy_ai)**
-  covers the health, hitbox and hurtbox components these enemies are built on.
+  covers the health, hitbox and hurtbox components these enemies are built on. The first 4 lessons are free.
+
+## More Free Godot Resources from CodingQuests
+
+Other free, MIT-licensed Godot 4 projects that work well next to this one:
+
+- **[State Machine](https://github.com/CodingQuests/godot-state-machine)**: A node-per-state machine, shown on a slime that idles, roams, chases, leaps, staggers and dies.
+- **[Hitbox and Hurtbox](https://github.com/CodingQuests/godot-hitbox-hurtbox)**: Health, hitbox and hurtbox components with one hit per swing, knockback, hit-stop and i-frames.
+- **[Top-Down Controller](https://github.com/CodingQuests/godot-top-down-controller)**: 8-direction movement, mouse aim, a dash with i-frames and a follow camera with shake.
+- **[Game Feel Lab](https://github.com/CodingQuests/godot-game-feel-lab)**: One sword swing split into seven layers you can switch on and off while the game runs.
+
+All twelve are listed on the [CodingQuests GitHub profile](https://github.com/CodingQuests).
 
 Made by [CodingQuests](https://codingquests.io/?utm_source=github&utm_medium=resource&utm_campaign=godot_enemy_ai).
